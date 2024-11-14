@@ -1,17 +1,21 @@
+package pokemon;
 import java.util.Random;
+
+
+
 
 public abstract class Pokemon {
 
 	    // Attributs de la classe Pokemon0
 	    private String nom;
 	    private int niveau;
-	    private int hp;
+	    protected int hp;
 	    private int atk;
 	    private Random random;
-	    private String type;
+	    private Type type;
 	    
 	    // Constructeur
-	    public Pokemon(String nom,String type) {
+	    public Pokemon(String nom,Type type) {
 	        this.nom = nom;
 	        this.random = new Random();
 	        
@@ -42,6 +46,10 @@ public abstract class Pokemon {
 	        return atk;
 	    }
 	    
+	    public Type getType() {
+	    	return this.type;
+	    }
+	    
 	    // Méthode pour vérifier si le Pokémon est KO
 	    public boolean isKO() {
 	        return this.hp == 0;
@@ -54,7 +62,7 @@ public abstract class Pokemon {
 	    }
 	    
 	    // Méthode abstraite
-	    public abstract void attaquer(Pokemon0 p);
+	    public abstract void attaquer(Pokemon p);
 	    
 	    
 	    // Méthode pour recevoir des dégâts
@@ -72,7 +80,8 @@ public abstract class Pokemon {
 	        return "Je m'appelle " + this.nom + " !\n" +
 	               "    je suis de niveau " + this.niveau + "\n" +
 	               "    j'ai " + this.hp + " points de vie\n" +
-	               "    mon attaque de base est de " + this.atk;
+	               "    mon attaque de base est de " + this.atk+
+	               "je suis de type "+this.type;
 	    }
 	    
 	    // Méthode de log pour afficher des messages de log
